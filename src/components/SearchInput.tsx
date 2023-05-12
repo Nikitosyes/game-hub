@@ -18,10 +18,22 @@ const SearchInput = ({ onSearch }: Props) => {
         }}
       >
         <InputGroup>
-          <InputLeftElement children={<BsSearch />} />
-          <Input
+          <InputLeftElement
+            onClick={(e) => {
+              if (ref.current) onSearch(ref.current.value);
+            }}
+            cursor={"pointer"}
+            children={<BsSearch />}
+            sx={{
+              transition: "transform 0.2s ease",
+              _hover: {
+                transform: "scale(135%)",
+              },
+            }}
+          />
+          <Input 
             ref={ref}
-            cursor="pointer"
+            cursor="auto"
             borderRadius={20}
             placeholder="Search games..."
           />
